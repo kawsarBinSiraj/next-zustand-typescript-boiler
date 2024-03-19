@@ -1,0 +1,19 @@
+/**
+ * description :- main css for this applications
+ * created_at:- 22/02/2024 16:18:36
+ */
+
+:root {
+    --background: #fff;
+    --foreground: #222;
+}
+
+[data-theme="dark"] {
+    --background: #222;
+    --foreground: pink;
+}
+
+body {
+    background-color: var(--background) !important;
+    color: var(--foreground) !important;
+}
