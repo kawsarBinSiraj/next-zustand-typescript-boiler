@@ -1,0 +1,154 @@
+/**
+ * description :- main css for this applications
+ * created_at:- 22/02/2024 16:18:36
+ */
+
+:root {
+    --background: #fff;
+    --foreground: #222;
+}
+
+[data-theme="dark"] {
+    --background: #222;
+    --foreground: rgb(196, 255, 192);
+}
+
+body {
+    background-color: var(--background) !important;
+    color: var(--foreground) !important;
+    overflow: hidden;
+
+    * {
+        color: var(--foreground) !important;
+    }
+}
+
+/**
+ * description :- smart carousel
+ * created_at:- 15/04/2024 10:43:59
+ */
+
+#s-carousel-circle {
+    --circle-size: 60vw;
+    margin-top: calc(var(--circle-size) / 1.35 * -1);
+    margin-left: -23vw;
+
+    .s-circle {
+        width: var(--circle-size);
+        aspect-ratio: 1;
+        background: linear-gradient(to left, #f4781f4f, #6599994d);
+        border-radius: 50%;
+        position: relative;
+        transition-duration: 1s;
+        transition-property: all;
+        transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+
+        &::after {
+            display: block;
+            content: "";
+            width: calc(100% - 32%);
+            aspect-ratio: 1;
+            background-color: #fff;
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            border-radius: 50%;
+        }
+
+        .circle-w {
+            --size: 18vw;
+            width: var(--size);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            filter: drop-shadow(0 0 5rem rgba(50, 50, 93, 0.5));
+            position: absolute;
+            z-index: 10;
+            transform-origin: center;
+
+            .circle-c {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 100%;
+                width: 150%;
+                padding-left: 30px;
+                transition: all 0.6s linear;
+                opacity: 0;
+
+                .sub-title {
+                    font-weight: 700;
+                }
+            }
+
+            &.active {
+                .circle-c {
+                    opacity: 1;
+                }
+            }
+
+            // top
+            &:nth-child(3) {
+                top: calc(var(--size) / 5 * -1);
+                left: 50%;
+                transform: translateX(-50%) rotate(180deg);
+            }
+            // bottom
+            &:nth-child(1) {
+                bottom: calc(var(--size) / 5 * -1);
+                left: 50%;
+                transform: translateX(-50%) rotate(0deg);
+            }
+
+            // left
+            &:nth-child(4) {
+                left: calc(var(--size) / 5 * -1);
+                top: 50%;
+                transform: translateY(-50%) rotate(90deg);
+            }
+            // right
+            &:nth-child(2) {
+                right: calc(var(--size) / 5 * -1);
+                top: 50%;
+                transform: translateY(-50%) rotate(-90deg);
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                border-radius: 50%;
+            }
+        }
+    }
+}
+
+#content-widgets {
+    .content-w {
+        padding: 15px;
+        border: 1px solid #6599994d;
+        border-radius: 10px;
+        text-align: center;
+        width: 125px;
+        transition: 0.1s all linear;
+
+        &.active {
+            filter: drop-shadow(0 0 5rem rgba(50, 50, 93, 0.5));
+            background-color: #3333333c;
+        }
+
+        img {
+            width: 150px;
+            aspect-ratio: 1;
+            margin-bottom: 10px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        p {
+            font-size: 14px;
+            font-weight: bold;
+        }
+    }
+}
